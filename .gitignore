@@ -107,3 +107,4 @@ venv.bak/
 *.tfstate
 *.json
 *.exe
+*.terraform
