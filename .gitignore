@@ -103,6 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-#terraform 
-.tfstate
-.json
+# terraform 
+*.tfstate
+*.json
+*.exe
