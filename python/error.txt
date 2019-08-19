@@ -1,0 +1,50 @@
+19-Aug-19 14:49:26 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:49:27 -INFO-Volumes Available: ['vol-05d95d5fd680acfb6', 'vol-0e5e3e8171bacb03c', 'vol-0bf97d82fc89eae26', 'vol-00246979dfa68588d']
+19-Aug-19 14:49:27 -INFO-Volumes Delete: vol-05d95d5fd680acfb6
+19-Aug-19 14:49:27 -INFO-Volumes Delete: vol-0e5e3e8171bacb03c
+19-Aug-19 14:49:27 -INFO-Volumes Delete: vol-0bf97d82fc89eae26
+19-Aug-19 14:49:27 -INFO-Volumes Delete: vol-00246979dfa68588d
+19-Aug-19 14:51:12 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:51:32 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:51:44 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:51:45 -INFO-Volumes Available: ['vol-06dbb741fdcc5fa9d', 'vol-093e97d02607ef1f2', 'vol-03c38a2f2be3ecb81']
+19-Aug-19 14:51:45 -INFO-Volumes Delete: vol-06dbb741fdcc5fa9d
+19-Aug-19 14:51:45 -INFO-Volumes Delete: vol-093e97d02607ef1f2
+19-Aug-19 14:51:45 -INFO-Volumes Delete: vol-03c38a2f2be3ecb81
+19-Aug-19 14:57:30 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:57:31 -INFO-Volumes Available: vol-082879da144865460
+19-Aug-19 14:57:31 -INFO-Volumes Available: vol-0daec288877f11d5c
+19-Aug-19 14:57:31 -INFO-Volumes Available: vol-0938623f4261713cb
+19-Aug-19 14:58:13 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:58:14 -INFO-Volumes Available: vol-082879da144865460
+19-Aug-19 14:58:29 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:58:29 -INFO-Volumes Available: vol-082879da144865460
+19-Aug-19 14:58:53 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:58:54 -INFO-Volumes Available: vol-082879da144865460
+19-Aug-19 14:59:29 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:59:29 -INFO-Volumes Available: vol-082879da144865460
+19-Aug-19 14:59:41 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 14:59:42 -INFO-Volumes Available: vol-082879da144865460
+19-Aug-19 14:59:42 -INFO-Volumes Delete: vol-082879da144865460
+19-Aug-19 14:59:43 -INFO-Volumes Delete: vol-0daec288877f11d5c
+19-Aug-19 14:59:43 -INFO-Volumes Delete: vol-0938623f4261713cb
+19-Aug-19 15:00:37 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 15:00:38 -INFO-Volumes Available: vol-0f3d3e835621b0497
+19-Aug-19 15:00:38 -INFO-Volumes Delete: vol-0f3d3e835621b0497
+19-Aug-19 15:00:38 -INFO-Volumes Delete: vol-046b4a65896114c98
+19-Aug-19 15:00:38 -INFO-Volumes Delete: vol-0f36d47a5e4942c55
+19-Aug-19 15:00:39 -INFO-Volumes Delete: vol-0e71a9bf091b8b327
+19-Aug-19 15:00:39 -INFO-Volumes Delete: vol-03e053bd8f356e299
+19-Aug-19 15:03:45 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 15:03:46 -INFO-Volumes Available: vol-035399089d9cdb4c2
+19-Aug-19 15:03:59 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 15:04:00 -INFO-Volumes Available: vol-035399089d9cdb4c2
+19-Aug-19 15:04:17 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+19-Aug-19 15:04:18 -INFO-Volumes Available: vol-035399089d9cdb4c2
+19-Aug-19 15:04:18 -INFO-Volumes Available: vol-02fa968778a72edd7
+19-Aug-19 15:04:18 -INFO-Volumes Available: vol-06128379b2fef6475
+19-Aug-19 15:04:18 -INFO-Volumes Available: vol-060f84aa21cfbf44c
+19-Aug-19 15:04:18 -INFO-Volumes Delete: vol-035399089d9cdb4c2
+19-Aug-19 15:04:19 -INFO-Volumes Delete: vol-02fa968778a72edd7
+19-Aug-19 15:04:19 -INFO-Volumes Delete: vol-06128379b2fef6475
+19-Aug-19 15:04:19 -INFO-Volumes Delete: vol-060f84aa21cfbf44c
