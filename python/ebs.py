@@ -40,7 +40,7 @@ def get_volumes(resource, region):
             print ('Error in for loop')
     except EndpointConnectionError as e:
         logging.error(e)
-        
+
     delete_volumes()
 
 
@@ -49,8 +49,8 @@ def delete_volumes():
         for i in vol:
             v = client.Volume(i.id)
             v.delete()
-            logging.info('Volumes Delete: ' +str(v.id))
-            print('Volumes Delete: ' +str(v.id))
+            logging.info('Volumes Deleted: ' +str(v.id))
+            print('Volumes Deleted: ' +str(v.id))
     
     except EndpointConnectionError as e:
         logging.error(e)
