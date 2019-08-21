@@ -110,7 +110,7 @@ def main():
     else:
         multiple_eni = [all_network_interfaces['NetworkInterfaces']]
         for int in multiple_eni:
-            logging.error('Multiple ENIs to the same instance({ins}): {i} '.format(ins = instanceid, i = int)) 
+            logging.error('Multiple ENIs with same hostname ({h}) found ({ins}): {i} '.format(ins = instanceid, i = int, h=hostname)) 
 
 
 if __name__ == "__main__":
