@@ -18,8 +18,6 @@ def parse_args():
     return args
 
 
-
-
 def get_client(region):
     return boto3.client('ec2', region)
 
@@ -83,9 +81,6 @@ def attach_eni(client,instanceid,eni_id,hostname):
             logging.error(str(e))
 
             
-
-
-
 def main():
     hostname        = args.hostname
     subnet          = args.subnet
