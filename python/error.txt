@@ -48,3 +48,6 @@
 19-Aug-19 15:04:19 -INFO-Volumes Delete: vol-02fa968778a72edd7
 19-Aug-19 15:04:19 -INFO-Volumes Delete: vol-06128379b2fef6475
 19-Aug-19 15:04:19 -INFO-Volumes Delete: vol-060f84aa21cfbf44c
+20-Aug-19 21:29:10 -INFO-Found credentials in shared credentials file: ~/.aws/credentials
+20-Aug-19 21:29:11 -INFO-Volumes Available: vol-08c221775b960bc78
+20-Aug-19 21:29:11 -INFO-Volumes Deleted: vol-08c221775b960bc78

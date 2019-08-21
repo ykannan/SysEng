@@ -1,4 +1,5 @@
 #ebs.py
+#Command : python .\ebs.py -res ec2 -reg us-east-1
 import boto3
 import logging
 import argparse
