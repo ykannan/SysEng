@@ -5,4 +5,9 @@
 20-Aug-19 21:27:22 Attached ENI eni-01180f33523d8bc1e to Instance i-00a87a843a2a12f9f. The ENI Attachment ID is eni-attach-07f9983daefe945a8
 20-Aug-19 21:27:40 An error occurred (InvalidParameterValue) when calling the AttachNetworkInterface operation: Instance 'i-00a87a843a2a12f9f' already has an interface attached at device index '1'.
 20-Aug-19 21:27:40 ENI :eni-01180f33523d8bc1e is already attached to the instance i-00a87a843a2a12f9f
-20-Aug-19 21:27:40 ENI Exists: eni-01180f33523d8bc1e
+20-Aug-19 21:27:40 ENI Exists: eni-01180f33523d8bc1e1111222266665555544444477788
+
+
+
++098765431234567890-=````~~~
+==
