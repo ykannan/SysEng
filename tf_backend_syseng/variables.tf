@@ -5,7 +5,3 @@ variable "region" {
 variable "profile" {
     default = "default"
 }
-
-variable "creds" {
-    default = "c:\\Users\\.aws\\creds\\credentials"
-}
