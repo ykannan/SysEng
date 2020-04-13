@@ -1,0 +1,38 @@
+---
+# aws cloudformation update-stack --stack-name test-ykannan-stack-1 --template-body file://./cf.yaml --capabilities CAPABILITY_NAMED_IAM
+# save all the files in s3
+
+AWSTemplateFormatVersion: "2010-09-09"
+Resources: 
+  EKSClusterIAM: 
+    Type: AWS::CloudFormation::Stack
+    Properties: 
+      TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/iam.yaml"
+
+  EKSCluster: 
+    Type: AWS::CloudFormation::Stack
+    DependsOn: EKSClusterIAM
+    Properties: 
+      TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/cluster.yaml"
+      Parameters: 
+        ClusterRole: !GetAtt EKSClusterIAM.Outputs.EKSClusterRoleArn
+        ClusterName: test-ykannan-1008
+        ClusterControlPlaneSecurityGroup: sg-366a044f
+        VpcId: vpc-dd9345b6
+        Subnets: "subnet-982713e2, subnet-4949d505"
+  
+  ManagedNodeGroup: 
+    Type: AWS::CloudFormation::Stack
+    DependsOn: EKSCluster
+    Properties: 
+      TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/managed_node_groups.yaml"
+      Parameters: 
+        ClusterName: test-ykannan-1008
+        ASGMin: 2
+        ASGMax: 2
+        ASGDesiredSize: 2
+        NodegroupName: test-ykannan-108-NodeGroup
+        InstanceType: t2.medium
+        NodeRoleArn: !GetAtt EKSClusterIAM.Outputs.NodeInstanceRoleArn
+        Subnets: "subnet-982713e2, subnet-4949d505"
+        DiskSize: 20
