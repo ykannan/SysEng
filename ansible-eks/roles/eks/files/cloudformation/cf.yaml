@@ -1,0 +1,189 @@
+---
+# aws cloudformation update-stack --stack-name test-ykannan-stack-1 --template-body file://./cf.yaml --capabilities CAPABILITY_NAMED_IAM
+# save all the files in s3
+
+
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+
+  ClusterName:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+  
+  ClusterControlPlaneSG:
+    Description: Security Group for Amazon EKS cluster.
+    Type: String
+
+  VpcId:
+    Description: VPC of the Amazon EKS cluster.
+    Type: String
+  
+  ClusterSubnets:
+    Description: The subnets in your VPC where your worker nodes will run.
+    Type: String
+  
+  MNGASGMax:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+  
+  MNGASGMin:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+
+  MNGASGDesiredSize:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+
+  MNGInstanceType:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+
+  MNGSubnets:
+    Description: The subnets in your VPC where your worker nodes will run.
+    Type: String
+
+  MNGDiskSize:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+  
+  MNGName:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+
+Resources: 
+  EKSClusterIAM: 
+    Type: AWS::CloudFormation::Stack
+    Properties: 
+      TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/iam.yaml"
+
+  EKSCluster: 
+    Type: AWS::CloudFormation::Stack
+    DependsOn: EKSClusterIAM
+    Properties: 
+      TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/cluster.yaml"
+      Parameters: 
+        ClusterRole: !GetAtt EKSClusterIAM.Outputs.EKSClusterRoleArn
+        ClusterName: !Ref ClusterName
+        ClusterControlPlaneSecurityGroup: !Ref ClusterControlPlaneSG
+        VpcId: !Ref VpcId
+        Subnets: !Ref ClusterSubnets
+  
+  ManagedNodeGroup: 
+    Type: AWS::CloudFormation::Stack
+    DependsOn: EKSCluster
+    Properties: 
+      TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/managed_node_groups.yaml"
+      Parameters: 
+        ClusterName: !Ref ClusterName
+        ASGMin: !Ref MNGASGMin
+        ASGMax: !Ref MNGASGMax
+        ASGDesiredSize: !Ref MNGASGDesiredSize
+        NodegroupName: !Ref MNGName
+        InstanceType: !Ref MNGInstanceType
+        NodeRoleArn: !GetAtt EKSClusterIAM.Outputs.NodeInstanceRoleArn
+        Subnets: !Ref MNGSubnets
+        DiskSize: !Ref MNGDiskSize
+
+
+
+
+
+
+
+
+
+
+
+
+# ---
+# # aws cloudformation update-stack --stack-name test-ykannan-stack-1 --template-body file://./cf.yaml --capabilities CAPABILITY_NAMED_IAM
+# # save all the files in s3
+
+# AWSTemplateFormatVersion: "2010-09-09"
+# Parameters:
+
+#   MNGASGMin:
+#     Description: Unique name for your Amazon EKS cluster.
+#     Type: String
+
+#   MNGASGMax:
+#     Description: Unique name for your Amazon EKS cluster.
+#     Type: String
+  
+#   MNGASGDesiredSize:
+#     Description: Unique name for your Amazon EKS cluster.
+#     Type: String
+
+#   MNGInstanceType:
+#     Description: Unique name for your Amazon EKS cluster.
+#     Type: String
+  
+#   MNGSubnets:
+#     Description: The subnets in your VPC where your worker nodes will run.
+#     Type: List<AWS::EC2::Subnet::Id>
+  
+#   MNGDiskSize:
+#     Description: Unique name for your Amazon EKS cluster.
+#     Type: String
+  
+#   MNGName:
+#     Description: Unique name for your Amazon EKS cluster.
+#     Type: String
+
+#   ClusterName:
+#     Description: Unique name for your Amazon EKS cluster.
+#     Type: String
+
+#   ClusterRole:
+#     Description: The IAM Role to allow Amazon EKS and the Kubernetes control plane to manage AWS resources on your behalf.
+#     Type: String
+
+#   ClusterControlPlaneSecurityGroup:
+#     Description: The security groups to apply to the EKS-managed Elastic Network Interfaces that are created in your worker node subnets.
+#     Type: AWS::EC2::SecurityGroup::Id
+
+#   VpcId:
+#     Description: The VPC to use for your EKS Cluster resources.
+#     Type: AWS::EC2::VPC::Id
+
+#   ClusterSubnets:
+#     Description: The subnets in your VPC where your worker nodes will run.
+#     Type: List<AWS::EC2::Subnet::Id>
+
+
+# Resources: 
+#   EKSIam: 
+#     Type: AWS::CloudFormation::Stack
+#     Properties: 
+#       TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/iam.yaml"
+
+#   EKSCluster: 
+#     Type: AWS::CloudFormation::Stack
+#     DependsOn: EKSClusterIAM
+#     Properties: 
+#       TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/cluster.yaml"
+#       Parameters: 
+#         ClusterRole: !GetAtt EKSClusterIAM.Outputs.EKSClusterRoleArn
+#         ClusterName: !Ref ClusterName
+#         ClusterControlPlaneSecurityGroup: !Ref ClusterControlPlaneSecurityGroup
+#         VpcId:  !Ref VpcId
+#         Subnets: !Ref ClusterSubnets
+  
+#   ManagedNodeGroup: 
+#     Type: AWS::CloudFormation::Stack
+#     DependsOn: EKSCluster
+#     Properties: 
+#       TemplateURL: "https://cf-ykannan-test-bucket.s3.us-east-2.amazonaws.com/managed_node_groups.yaml"
+#       Parameters: 
+#         ClusterName: !Ref ClusterName
+#         ASGMin: !Ref MNGASGMin
+#         ASGMax: !Ref MNGASGMax
+#         ASGDesiredSize: !Ref MNGASGDesiredSize
+#         NodegroupName: !Ref MNGName
+#         InstanceType: !Ref MNGInstanceType
+#         NodeRoleArn: !GetAtt EKSClusterIAM.Outputs.NodeInstanceRoleArn
+#         Subnets: !Ref MNGSubnets
+#         DiskSize: !Ref MNGDiskSize
+
+
+

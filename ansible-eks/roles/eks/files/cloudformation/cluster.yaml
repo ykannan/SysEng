@@ -1,0 +1,53 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: EKS Cluster
+
+Parameters:
+  KubernetesVersion:
+    Description: The Kubernetes version to install
+    Type: String
+    Default: 1.15
+    AllowedValues:
+      - 1.14
+      - 1.15
+
+  ClusterName:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+
+  ClusterRole:
+    Description: The IAM Role to allow Amazon EKS and the Kubernetes control plane to manage AWS resources on your behalf.
+    Type: String
+
+  ClusterControlPlaneSecurityGroup:
+    Description: The security groups to apply to the EKS-managed Elastic Network Interfaces that are created in your worker node subnets.
+    Type: AWS::EC2::SecurityGroup::Id
+
+  VpcId:
+    Description: The VPC to use for your EKS Cluster resources.
+    Type: AWS::EC2::VPC::Id
+
+  Subnets:
+    Description: The subnets in your VPC where your worker nodes will run.
+    Type: List<AWS::EC2::Subnet::Id>
+
+Resources:
+  Cluster:
+    Type: AWS::EKS::Cluster
+    Properties:
+      Name: !Ref ClusterName
+      Version: !Ref KubernetesVersion
+      RoleArn: !Ref ClusterRole
+      ResourcesVpcConfig:
+        SecurityGroupIds: 
+          - !Ref ClusterControlPlaneSecurityGroup
+        SubnetIds: !Ref Subnets
+
+Outputs:
+  ClusterCertificate:
+    Description: The cluster certificate
+    Value: !GetAtt Cluster.CertificateAuthorityData
+
+  ClusterEndpoint:
+    Description: The cluster endpoint
+    Value: !GetAtt Cluster.Endpoint

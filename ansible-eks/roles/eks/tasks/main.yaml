@@ -1,0 +1,27 @@
+---
+- name: Upload cloudformation templates to s3
+  s3_sync:
+    bucket: cf-ykannan-test-bucket
+    file_root: roles/eks/files/cloudformation/
+
+- name: create a cloudformation stack
+  cloudformation:
+    stack_name: "{{ ClusterName }}"
+    state: "present"
+    region: "us-east-2"
+    disable_rollback: true
+    template: "roles/eks/files/cloudformation/cf.yaml"
+    template_parameters:
+      ClusterName: "{{ ClusterName }}"
+      ClusterControlPlaneSG: "{{ ClusterControlPlaneSG }}"
+      VpcId: "{{ VpcId }}"
+      ClusterSubnets: "{{ ClusterSubnets }}"
+      MNGASGMin: "{{ MNGASGMin }}"
+      MNGASGMax: "{{ MNGASGMax }}"
+      MNGASGDesiredSize: "{{ MNGASGDesiredSize }}"
+      MNGInstanceType: "{{ MNGInstanceType }}"
+      MNGSubnets: "{{ MNGSubnets }}"
+      MNGDiskSize: "{{ MNGDiskSize }}"
+      MNGName: "{{ MNGName }}"
+    tags:
+      Stack: "ansible-eks"

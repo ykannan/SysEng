@@ -1,0 +1,57 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: EKS Cluster
+
+Parameters:
+
+  ClusterName:
+    Description: Unique name for your Amazon EKS cluster.
+    Type: String
+  
+  DiskSize:
+    Description: Node disk size
+    Type: String
+  
+  ASGMin:
+    Description: Auto scaling minimum value
+    Type: String
+  
+  ASGMax:
+    Description: Auto scaling mamimum value
+    Type: String
+ 
+  ASGDesiredSize:
+    Description: Auto scaling desired value
+    Type: String
+
+  NodegroupName:
+    Description: Name of the node group name
+    Type: String
+  
+  InstanceType:
+    Type: String
+    Description: Type of the instance
+
+  NodeRoleArn:
+    Description: node group IAM role ARN for worker nodes
+    Type: String
+
+  Subnets:
+    Description: The subnets in your VPC where your worker nodes will run.
+    Type: List<AWS::EC2::Subnet::Id>
+  
+Resources:
+  EKSNodegroup:
+    Type: 'AWS::EKS::Nodegroup'
+    Properties:
+      ClusterName: !Ref ClusterName
+      NodeRole: !Ref NodeRoleArn
+      ScalingConfig:
+        MinSize: !Ref ASGMin 
+        DesiredSize: !Ref ASGDesiredSize
+        MaxSize: !Ref ASGMax
+      DiskSize: !Ref DiskSize
+      NodegroupName: !Ref NodegroupName
+      InstanceTypes:
+        - !Ref InstanceType
+      Subnets: !Ref Subnets
