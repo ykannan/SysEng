@@ -1,4 +1,5 @@
 # cat /var/log/nginx/access.log | grep https://* | awk '{print $1}' |  sort -n | uniq -c | | head -n 15
+#cat /Users/yogeshkannan/Desktop/SysEng/python/my_scripts/logs.txt | awk '{print $1}' | sort -n | uniq -c | head -n 15
 
 
 import re

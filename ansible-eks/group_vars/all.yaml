@@ -3,10 +3,11 @@ ClusterName: Dev
 ClusterControlPlaneSG: sg-366a044f
 VpcId: vpc-dd9345b6
 ClusterSubnets: "subnet-982713e2, subnet-4949d505"
-MNGASGMin: 2
-MNGASGMax: 2
-MNGASGDesiredSize: 2
+MNGASGMin: 1
+MNGASGMax: 1
+MNGASGDesiredSize: 1
 MNGInstanceType: t2.medium
 MNGSubnets: "subnet-982713e2, subnet-4949d505"
 MNGDiskSize: 20
 MNGName: "{{ ClusterName }}-NodeGroup"
+BucketName: "cf-ykannan-test-bucket"

@@ -1,7 +1,12 @@
 ---
+- name: create s3 bukcet   
+  s3_bucket:
+    name: "{{ BucketName }}"
+    state: present
+
 - name: Upload cloudformation templates to s3
   s3_sync:
-    bucket: cf-ykannan-test-bucket
+    bucket: "{{ BucketName }}"
     file_root: roles/eks/files/cloudformation/
 
 - name: create a cloudformation stack

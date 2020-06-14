@@ -11,3 +11,20 @@ def non_repeating(strg):
             print(i)
 
 non_repeating('oaabrbccdecdf')
+
+
+
+
+nums1 = [1,2,2,1], 
+nums2 = [2,2]
+
+# nums = [1,1,2]
+# counter = {}
+# for i in nums:
+#   if i in counter:
+#     counter[i] += 1
+#   else:
+#     counter[i] = 1
+
+# for x,y in counter.items():
+#   print(x,y)
